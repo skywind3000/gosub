@@ -6,11 +6,14 @@ type PacketData struct {
 	data []byte
 }
 
-func (self *PacketData) NewPacketData(size int, overhead int) {
+func NewPacketData(size int, overhead int) *PacketData {
 	var capacity int = size + overhead
+	self := new(PacketData)
+	// self := &PacketData{ ... }
 	self.head = overhead
 	self.tail = overhead
 	self.data = make([]byte, capacity)
+	return self
 }
 
 func (self *PacketData) requireHead(size int) bool {
