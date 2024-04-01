@@ -1,4 +1,4 @@
-package gosub
+package utils
 
 import (
 	"os"
