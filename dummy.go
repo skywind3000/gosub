@@ -1,4 +1,4 @@
-package gosub
+package main
 
 func DummyAdd(x int, y int) int {
 	z := 100

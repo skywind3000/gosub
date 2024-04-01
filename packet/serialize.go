@@ -70,7 +70,9 @@ func HexDump(p []byte, char_visible bool, limit int) string {
 				line[6+16*3+2+j] = c
 			}
 		}
-		p = p[16:]
+		if len(p) >= 16 {
+			p = p[16:]
+		}
 		s := string(line)
 		s = strings.TrimRight(s, " ")
 		output = append(output, s)
