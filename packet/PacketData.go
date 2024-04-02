@@ -24,8 +24,10 @@ var (
 )
 
 // ---------------------------------------------------------------------
-// constructor
+// Methods
 // ---------------------------------------------------------------------
+
+// constructor
 func NewPacketData(size int, overhead int) *PacketData {
 	var capacity int = size + overhead
 	self := new(PacketData)
@@ -50,6 +52,10 @@ func (self *PacketData) GetError() error {
 	return self.err
 }
 
+func (self *PacketData) ClearError() {
+	self.err = nil
+}
+
 func (self *PacketData) String() string {
 	t := fmt.Sprintf("PacketData(%d/%d)", self.GetSize(), len(self.data))
 	return t
@@ -59,6 +65,11 @@ func (self *PacketData) DumpHex(limit int) string {
 	data := self.data[self.head:self.tail]
 	str := HexDump(data, true, limit)
 	return str
+}
+
+// For short term usage. Don't keep the reference to the data
+func (self *PacketData) GetData() []byte {
+	return self.data[self.head:self.tail]
 }
 
 func (self *PacketData) requireHead(size int) bool {
