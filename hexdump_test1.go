@@ -1,6 +1,8 @@
 package main
 
 import (
+	"unsafe"
+
 	"github.com/skywind3000/gosub/packet"
 )
 
@@ -11,4 +13,7 @@ func main() {
 	b = append(b, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66)
 	s := packet.HexDump(b, true, 0)
 	println(s)
+	t := &b[2]
+	println(*t)
+	println(uintptr(unsafe.Pointer(t)))
 }
