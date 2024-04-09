@@ -55,7 +55,7 @@ func (self *AtomHeader) Unmarshal(p []byte) {
 	self.DstAP = uint16(p[14]) | (uint16(p[15]) << 8)
 }
 
-func (self *AtomHeader) PushHead(pd *PacketData) bool {
+func (self *AtomHeader) PushHeader(pd *PacketData) bool {
 	if !pd.requireHead(16) {
 		return false
 	}
@@ -64,7 +64,7 @@ func (self *AtomHeader) PushHead(pd *PacketData) bool {
 	return true
 }
 
-func (self *AtomHeader) PopHead(pd *PacketData) bool {
+func (self *AtomHeader) PopHeader(pd *PacketData) bool {
 	if pd.GetSize() < 16 {
 		return false
 	}
