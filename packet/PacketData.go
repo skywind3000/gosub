@@ -38,6 +38,14 @@ func NewPacketData(size int, overhead int) *PacketData {
 	return self
 }
 
+func (self *PacketData) Init(size int, overhead int) {
+	var capacity int = size + overhead
+	self.head = overhead
+	self.tail = overhead
+	self.err = nil
+	self.data = make([]byte, capacity)
+}
+
 func (self *PacketData) Release() {
 	self.head = 0
 	self.tail = 0
