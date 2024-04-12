@@ -8,8 +8,8 @@
 package packet
 
 type GPacket struct {
-	Frame  FrameHeader
 	Atom   AtomHeader
+	Frame  FrameHeader
 	Access AccessHeader
 	Data   PacketData
 }
