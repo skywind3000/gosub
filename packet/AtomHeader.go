@@ -9,7 +9,7 @@ package packet
 
 import "fmt"
 
-// AtomPacket Header
+// AtomPacket Header: 16 bytes
 type AtomHeader struct {
 	Cmd        uint8  // 4 bits: push, sr_push, icmp
 	Cls        uint8  // 3 bits

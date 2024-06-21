@@ -9,6 +9,8 @@ package packet
 
 import "fmt"
 
+// router to router packet: 20 bytes
+// a frame packet may contain multiple atom packets
 type FrameHeader struct {
 	Mask      uint16 // encryption key = mask + md5(secret_token)
 	Signature uint16 // hash(data+cmd+token+ts) for authentication & integrity
